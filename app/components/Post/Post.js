@@ -18,9 +18,9 @@ Post.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
   thumbnail: PropTypes.string,
-  num_comments: PropTypes.string,
-  ups: PropTypes.string,
-  downs: PropTypes.string,
+  num_comments: PropTypes.number,
+  ups: PropTypes.number,
+  downs: PropTypes.number,
 };
 
 export default Post;
