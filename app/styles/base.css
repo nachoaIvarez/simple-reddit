@@ -1,0 +1,34 @@
+*,
+*::before,
+*::after {
+  border: 0;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-overflow-scrolling: touch;
+  text-decoration: none;
+}
+
+body {
+  color: $color-primary-text;
+  font-family: 'Exo', sans-serif;
+  font-size: 1.1em;
+  font-smooth: always;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.666em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5 {
+  border-bottom: 1px solid #FFEFEF;
+  color: $color-primary-dark;
+  padding-bottom: 10px;
+}
+
+a {
+  color: $color-primary;
+}
