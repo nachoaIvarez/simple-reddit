@@ -1,7 +1,6 @@
 import { handleActions } from 'redux-actions';
 
 import {
-  CHANGE_SUBREDDIT,
   REQUEST_SUBREDDIT,
   REQUEST_SUBREDDIT_SUCCESS,
   REQUEST_SUBREDDIT_FAILURE,
@@ -15,13 +14,10 @@ const initialState = {
 };
 
 export default handleActions({
-  [CHANGE_SUBREDDIT]: (state, action) => ({
-    ...state,
-    subreddit: action.payload.subreddit,
-  }),
-  [REQUEST_SUBREDDIT]: state => ({
+  [REQUEST_SUBREDDIT]: (state, action) => ({
     ...state,
     loaded: false,
+    subreddit: action.payload.subreddit,
   }),
   [REQUEST_SUBREDDIT_SUCCESS]: (state, action) => ({
     ...state,

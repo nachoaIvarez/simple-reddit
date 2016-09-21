@@ -13,13 +13,13 @@ class Layout extends Component {
   }
 
   render() {
-    const { posts, subreddit, changeSubreddit } = this.props;
+    const { posts, subreddit, requestSubreddit } = this.props;
 
     return (
       <Flexbox flexDirection="column" minHeight="100vh">
 
         <Flexbox element="header" height="60px">
-          <Input type="text" value={subreddit} onChange={changeSubreddit} debounce={300} />
+          <Input type="text" value={subreddit} onChange={requestSubreddit} debounce={300} />
         </Flexbox>
 
         <Flexbox flexGrow={1} flexDirection="column">
@@ -36,7 +36,6 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  changeSubreddit: PropTypes.func,
   requestSubreddit: PropTypes.func,
   subreddit: PropTypes.string,
   posts: PropTypes.arrayOf(PropTypes.object),
