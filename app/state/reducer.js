@@ -8,27 +8,32 @@ import {
 
 const initialState = {
   subreddit: 'funny',
-  loaded: false,
-  error: false,
+  success: false,
+  loading: false,
+  failure: false,
   posts: [],
 };
 
 export default handleActions({
   [REQUEST_SUBREDDIT]: (state, action) => ({
     ...state,
-    loaded: false,
+    success: false,
+    loading: true,
+    failure: false,
     subreddit: action.payload.subreddit,
   }),
   [REQUEST_SUBREDDIT_SUCCESS]: (state, action) => ({
     ...state,
-    error: false,
-    loaded: true,
+    success: true,
+    loading: false,
+    failure: false,
     posts: action.payload.data.children,
   }),
   [REQUEST_SUBREDDIT_FAILURE]: state => ({
     ...state,
-    loaded: true,
-    error: true,
+    success: false,
+    loading: false,
+    failure: true,
     posts: [],
   }),
 }, initialState);

@@ -1,6 +1,8 @@
 import { Component, PropTypes } from 'react';
 import DebounceInput from 'react-debounce-input';
 
+import styles from './styles.css';
+
 class Input extends Component {
   static propTypes = {
     onChange: PropTypes.func,
@@ -29,6 +31,7 @@ class Input extends Component {
     const { value } = this.props;
     return (
       <DebounceInput
+        className={styles.input}
         minLength={2}
         debounceTimeout={this.props.debounce}
         onChange={this.handleChange}

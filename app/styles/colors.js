@@ -1,10 +1,10 @@
 module.exports = {
-  'color-primary-dark': '#D32F2F',
-  'color-primary': '#F44336',
-  'color-primary-light': '#FF6666',
-  'color-primary-background': '#FFEEEE',
+  red: '#FF5252',
+  green: '#43A047',
+  'sky-blue': '#3498DB',
+  'ocean-blue': '#2980B9',
+
   'color-text-light': '#FFFFFF',
-  'color-accent': '#795548',
   'color-primary-text': '#212121',
   'color-secondary-text': '#727272',
   'color-divider': '#B6B6B6',

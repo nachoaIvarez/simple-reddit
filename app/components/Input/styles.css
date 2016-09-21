@@ -1,0 +1,12 @@
+.input {
+  background: transparent;
+  border-bottom: 1px solid @color;
+  border-top: 1px solid transparent;
+  color: $color-text-light;
+  transition: all 300ms ease;
+  width: 25%;
+
+  &:focus {
+    width: 30%;
+  }
+}

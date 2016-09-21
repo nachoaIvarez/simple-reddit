@@ -1,0 +1,31 @@
+@keyframes color-change {
+  from {
+    background-color: $sky-blue;
+  }
+  to {
+    background-color: $ocean-blue;
+  }
+}
+
+.header {
+  background-color: $sky-blue;
+  transition: all 300ms ease;
+  color: $color-text-light;
+  font-size: 33px;
+
+  @media only screen and (max-width: 736px) {
+    font-size: 25px;
+  }
+}
+
+.success {
+  background-color: $sky-blue;
+}
+
+.failure {
+  background-color: $red;
+}
+
+.loading {
+  animation: color-change 1s infinite alternate;
+}
