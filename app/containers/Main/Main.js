@@ -5,6 +5,7 @@ import * as actions from '~/state/actions';
 import Input from '~/components/Input';
 import Post from '~/components/Post';
 import Header from '~/components/Header';
+import Status from '~/components/Status';
 
 class Layout extends Component {
   componentWillMount() {
@@ -14,32 +15,40 @@ class Layout extends Component {
   }
 
   render() {
-    const { posts, subreddit, requestSubreddit, success, loading, failure } = this.props;
+    const { posts, subreddit, requestSubreddit, status } = this.props;
+    const success = status === 'success';
 
     return (
       <Flexbox
-        flexDirection="column"
         alignItems="stretch"
-        minHeight="100vh"
+        flexDirection="column"
         maxWidth="100vw"
+        minHeight="100vh"
       >
         <Header
-          success={success}
-          loading={loading}
-          failure={failure}
           height="80px"
+          status={status}
         >
           {"/r/"}
           <Input
+            debounce={600}
+            onChange={requestSubreddit}
             type="text"
             value={subreddit}
-            onChange={requestSubreddit}
-            debounce={600}
           />
         </Header>
-
-        <Flexbox flexGrow={1} flexDirection="column" alignSelf="center" maxWidth="1024px">
-          {posts.map(({ data }, index) => <Post {...data} key={index} />)}
+        <Flexbox
+          alignSelf="center"
+          flex="1"
+          flexDirection="column"
+          justifyContent={success ? 'flex-start' : 'center'}
+          maxWidth="1024px"
+        >
+          {
+            success
+            ? posts.map(({ data }, index) => <Post {...data} key={index} />)
+            : <Status margin="auto" status={status} />
+          }
         </Flexbox>
       </Flexbox>
     );
@@ -50,17 +59,13 @@ Layout.propTypes = {
   requestSubreddit: PropTypes.func,
   subreddit: PropTypes.string,
   posts: PropTypes.arrayOf(PropTypes.object),
-  success: PropTypes.bool,
-  loading: PropTypes.bool,
-  failure: PropTypes.bool,
+  status: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
   subreddit: state.subreddit,
   posts: state.posts,
-  success: state.success,
-  loading: state.loading,
-  failure: state.failure,
+  status: state.status,
 });
 
 export default connect(mapStateToProps, actions)(Layout);

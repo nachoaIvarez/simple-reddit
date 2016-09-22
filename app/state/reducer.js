@@ -4,36 +4,39 @@ import {
   REQUEST_SUBREDDIT,
   REQUEST_SUBREDDIT_SUCCESS,
   REQUEST_SUBREDDIT_FAILURE,
+  SHOW_DETAIL,
+  HIDE_DETAIL,
 } from './constants';
 
 const initialState = {
   subreddit: 'funny',
-  success: false,
-  loading: false,
-  failure: false,
+  status: null,
+  detail: null,
   posts: [],
 };
 
 export default handleActions({
   [REQUEST_SUBREDDIT]: (state, action) => ({
     ...state,
-    success: false,
-    loading: true,
-    failure: false,
+    status: 'loading',
     subreddit: action.payload.subreddit,
   }),
   [REQUEST_SUBREDDIT_SUCCESS]: (state, action) => ({
     ...state,
-    success: true,
-    loading: false,
-    failure: false,
+    status: 'success',
     posts: action.payload.data.children,
   }),
   [REQUEST_SUBREDDIT_FAILURE]: state => ({
     ...state,
-    success: false,
-    loading: false,
-    failure: true,
+    status: 'failure',
     posts: [],
+  }),
+  [SHOW_DETAIL]: (state, action) => ({
+    ...state,
+    detail: action.payload.id,
+  }),
+  [HIDE_DETAIL]: state => ({
+    ...state,
+    detail: null,
   }),
 }, initialState);

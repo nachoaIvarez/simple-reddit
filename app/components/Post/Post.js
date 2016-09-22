@@ -9,6 +9,7 @@ const Post = ({ title, author, thumbnail, ups, downs, num_comments: numComments 
     alignItems="center"
     padding="15px"
     className={styles.post}
+    maxWidth="1024px"
   >
     <Image
       className={styles.thumbnail}

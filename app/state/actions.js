@@ -4,6 +4,8 @@ import {
   REQUEST_SUBREDDIT,
   REQUEST_SUBREDDIT_SUCCESS,
   REQUEST_SUBREDDIT_FAILURE,
+  SHOW_DETAIL,
+  HIDE_DETAIL,
 } from './constants';
 
 export const requestSubreddit = subreddit => ({
@@ -21,4 +23,15 @@ export const requestSubreddit = subreddit => ({
       REQUEST_SUBREDDIT_FAILURE,
     ],
   },
+});
+
+export const showDetail = id => ({
+  type: SHOW_DETAIL,
+  payload: {
+    id,
+  },
+});
+
+export const hideDetail = () => ({
+  type: HIDE_DETAIL,
 });

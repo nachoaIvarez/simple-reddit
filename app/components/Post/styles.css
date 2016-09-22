@@ -11,10 +11,6 @@
   font-weight: bolder;
 }
 
-.title {
-
-}
-
 .numComments,
 .ups,
 .downs {
@@ -23,7 +19,7 @@
   align-items: center;
 
   &::before {
-    margin-right: 10px;
+    margin-right: 5px;
   }
 }
 

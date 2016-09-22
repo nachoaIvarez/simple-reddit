@@ -10,7 +10,6 @@ class Input extends Component {
     value: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
-      PropTypes.bool,
     ]),
   }
 

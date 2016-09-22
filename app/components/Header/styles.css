@@ -27,5 +27,5 @@
 }
 
 .loading {
-  animation: color-change 1s infinite alternate;
+  animation: color-change 300ms infinite alternate;
 }

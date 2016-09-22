@@ -3,10 +3,9 @@ import Flexbox from 'flexbox-react';
 
 import styles from './styles.css';
 
-const Header = ({ status, ...other }) => {
+const Status = ({ status, ...other }) => {
   const classes = [
-    styles.header,
-    status === 'success' ? styles.success : null,
+    styles.status,
     status === 'failure' ? styles.failure : null,
     status === 'loading' ? styles.loading : null,
   ];
@@ -14,15 +13,13 @@ const Header = ({ status, ...other }) => {
   return (
     <Flexbox
       className={classes.join(' ')}
-      justifyContent="center"
-      alignItems="center"
       {...other}
     />
   );
 };
 
-Header.propTypes = {
-  status: PropTypes.string,
+Status.propTypes = {
+  status: PropTypes.oneOf(['loading', 'failure']),
 };
 
-export default Header;
+export default Status;
