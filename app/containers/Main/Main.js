@@ -6,8 +6,9 @@ import Input from '~/components/Input';
 import Post from '~/components/Post';
 import Header from '~/components/Header';
 import Status from '~/components/Status';
+import DetailOverlay from '~/components/DetailOverlay';
 
-class Layout extends Component {
+class Main extends Component {
   componentWillMount() {
     const { subreddit, requestSubreddit } = this.props;
 
@@ -15,8 +16,21 @@ class Layout extends Component {
   }
 
   render() {
-    const { posts, subreddit, requestSubreddit, status } = this.props;
+    const {
+      posts,
+      subreddit,
+      requestSubreddit,
+      status,
+      detailPost,
+      showDetail,
+      hideDetail,
+    } = this.props;
+
     const success = status === 'success';
+
+    const renderedPosts = posts.map(({ data }, index) => (
+      <Post data={data} key={index} onClick={() => showDetail(data)} />
+    ));
 
     return (
       <Flexbox
@@ -31,7 +45,7 @@ class Layout extends Component {
         >
           {"/r/"}
           <Input
-            debounce={600}
+            debounce={500}
             onChange={requestSubreddit}
             type="text"
             value={subreddit}
@@ -44,28 +58,29 @@ class Layout extends Component {
           justifyContent={success ? 'flex-start' : 'center'}
           maxWidth="1024px"
         >
-          {
-            success
-            ? posts.map(({ data }, index) => <Post {...data} key={index} />)
-            : <Status margin="auto" status={status} />
-          }
+          {success ? renderedPosts : <Status margin="auto" status={status} />}
         </Flexbox>
+        {detailPost && <DetailOverlay post={detailPost} onClick={hideDetail} />}
       </Flexbox>
     );
   }
 }
 
-Layout.propTypes = {
+Main.propTypes = {
   requestSubreddit: PropTypes.func,
   subreddit: PropTypes.string,
   posts: PropTypes.arrayOf(PropTypes.object),
   status: PropTypes.string,
+  detailPost: PropTypes.object,
+  showDetail: PropTypes.func,
+  hideDetail: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
   subreddit: state.subreddit,
   posts: state.posts,
   status: state.status,
+  detailPost: state.detailPost,
 });
 
-export default connect(mapStateToProps, actions)(Layout);
+export default connect(mapStateToProps, actions)(Main);

@@ -11,7 +11,7 @@ import {
 const initialState = {
   subreddit: 'funny',
   status: null,
-  detail: null,
+  detailPost: null,
   posts: [],
 };
 
@@ -33,10 +33,10 @@ export default handleActions({
   }),
   [SHOW_DETAIL]: (state, action) => ({
     ...state,
-    detail: action.payload.id,
+    detailPost: action.payload.post,
   }),
   [HIDE_DETAIL]: state => ({
     ...state,
-    detail: null,
+    detailPost: null,
   }),
 }, initialState);

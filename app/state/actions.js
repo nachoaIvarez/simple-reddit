@@ -25,10 +25,10 @@ export const requestSubreddit = subreddit => ({
   },
 });
 
-export const showDetail = id => ({
+export const showDetail = post => ({
   type: SHOW_DETAIL,
   payload: {
-    id,
+    post,
   },
 });
 

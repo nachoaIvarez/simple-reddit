@@ -1,5 +1,11 @@
 .post {
   border-bottom: 1px color($ocean-blue a(20%)) solid;
+
+  &.white {
+    background-color: white;
+    border-bottom: 0;
+    border-radius: 3px;
+  }
 }
 
 .thumbnail {
@@ -14,9 +20,9 @@
 .numComments,
 .ups,
 .downs {
-  margin-right: 20px;
-  display: flex;
   align-items: center;
+  display: flex;
+  margin-right: 20px;
 
   &::before {
     margin-right: 5px;

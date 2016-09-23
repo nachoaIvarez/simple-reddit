@@ -5,8 +5,8 @@ const Image = ({ src, size = 'cover', position = 'center', ...other }) => (
   <Flexbox
     style={{
       backgroundImage: `url(${src})`,
-      backgroundSize: size,
       backgroundPosition: position,
+      backgroundSize: size,
     }}
     {...other}
   />

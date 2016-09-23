@@ -9,6 +9,7 @@
 }
 
 body {
+  background-color: #FEF;
   color: $color-primary-text;
   font-family: 'Exo', sans-serif;
   font-size: 1.1em;

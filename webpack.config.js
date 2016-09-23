@@ -36,7 +36,7 @@ module.exports = {
   },
   module: {
     loaders: [
-      // React
+      // Javascript
       {
         test: /\.js$/,
         loader: 'babel',
@@ -68,6 +68,13 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('css'),
         include: path.join(__dirname, 'node_modules'),
+      },
+
+      // Image
+      {
+        test: /\.png$/,
+        loader: 'file',
+        include: path.join(__dirname, 'app'),
       },
     ],
   },
